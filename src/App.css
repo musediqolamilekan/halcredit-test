@@ -1,38 +1,514 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family: 'Open Sans', sans-serif;
+  --fz-x: 20px;
+  --primary-color: hsl(0, 0%, 0%);
+  --secundary-color: #F9F9F9;
+  --text-color: #828282;
+  --color-line: #E5E5E5
+}
+
+body {
+  height: 100vh;
+  position: relative;
+  font-size: var(--fz-x);
+  line-height: 1.3;
+  font-family: var(--font-family);
+  text-rendering: optimizeLegability;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "Liga" on;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 30px;
+}
+
+.sideBar {
+  width: 18%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding: 30px;
+  border-right: 1px solid var(--color-line);
+}
+
+.sideBar__logo h1 {
+  font-size: 1.2em;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sideBar__items {
+  margin-top: 30px;
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sideBar__list {
+  width: 100%;
+  font-size: 0.7em;
+  color: #000;
+  font-weight: 400;
+  margin-top: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.active {
+  background-color: #000;
+  color: #fff;
+}
+
+
+.sideBar__list i {
+  font-size: 1.5em;
+  color: #DBDBDB;
+  margin-right: 10px;
+}
+
+.sideBar__list .bx-log-out {
+  color: rgb(243, 74, 74);
+}
+
+.sideBar__bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 1%;
+  left: 0;
+  padding: 0px 30px;
+}
+
+.flexBar {
+  flex-basis: 80%;
+  height: 100vh;
+  margin-left: 250px;
+  position: relative;
+}
+
+/* ************* Table ******************** */
+.table {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+table {
+  display: grid;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.8em;
+  /* These are just initial values which are overriden using JavaScript when a column is resized */
+  grid-template-columns:
+    minmax(150px, 2fr) minmax(100px, 1fr) minmax(150px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(120px, 1fr) minmax(90px, 1fr)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  padding: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+td img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+td span {
+  margin-top: 3px;
+}
+
+td button {
+  padding: 5px 10px;
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.9em;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  padding: 15px;
+  text-align: left;
+  font-weight: normal;
+  color: #B9B9B9;
+  font-size: 0.8em;
+  border-bottom: 1px solid var(--color-line);
+}
+
+th:last-child {
+  border: 0;
+}
+
+.resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;
+  width: 3px;
+  cursor: col-resize;
+}
+
+.resize-handle:hover,
+/* The following selector is needed so the handle is visible during resize even if the mouse isn't over the handle anymore */
+.header--being-resized .resize-handle {
+  opacity: 0.5;
+}
+
+th:hover .resize-handle {
+  opacity: 0.3;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #000000;
+  font-size: 0.8em;
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* tr:nth-child(even) td {
+  background: #f8f6ff;
+} */
+
+
+
+/* =========== Haeder =================== */
+.header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 25px;
+}
+
+.header__end {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__start {
+  flex-basis: 15%;
+}
+
+.header__middle {
+  flex-basis: 50%;
+  margin: 0px 20px;
+  position: relative;
+}
+
+.header__middle i {
+  position: absolute;
+  top: 20%;
+  left: 2%;
+  font-size: 0.8em;
+  color: var(--color-line);
+}
+
+.header__search {
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  font-family: inherit;
+  font-size: 0.7em;
+  border-radius: 8px;
+  border: 1px solid var(--color-line);
+  outline: none;
+  margin-top: -25px;
+}
+
+.header__title {
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.header__notify {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--secundary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7px;
+}
+
+.header__notify i {
+  font-size: 1.3em;
+  color: var(--secundary-color);
+}
+
+.header__profile {
+  padding: 10px 20px;
+  background: var(--secundary-color);
+  font-size: 0.7em;
+  color: #000;
+  margin-top: -7px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.header__profile img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.header__profile-text {
+  margin-top: 5px;
+}
+
+.header__img {
+  margin-right: 10px;
+}
+
+.data__button {
+  padding: 10px;
+  margin: 20px 0px;
+  border: 1px solid #000;
+  font-size: 0.7em;
+  color: #000;
+  background-color: transparent;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.data__button i {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 30px 0px;
+}
+
+.dashboard__start {
+  position: relative;
+  flex-basis: 45%;
+  height: 40vh;
+  border: 1px solid var(--color-line);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.dashboard__end {
+  position: relative;
+  flex-basis: 20%;
+  height: 40vh;
+  border: 1px solid var(--color-line);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard__end h3 {
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+.dashboard__end div {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dashboard__end p {
+  font-size: 0.6em;
+  margin-bottom: 6px;
+}
+
+.dashboard__end h2 {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.dashboard__circle {
+  width: 120px;
+  height: 120px;
+  /* border: 10px solid #000; */
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-color: #C6C7F5 #1c1c1c #BAEDBD #FFCB00;
+}
+
+.dashboard__circle h2 {
+  font-size: 1.2em;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.dashboard__circle p {
+  font-size: 0.6em;
+}
+
+.dashboard__heading {
+  font-size: 0.7em;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.dashboard__year {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard__year div:not(:last-child) {
+  margin-right: 10px;
+}
+
+.dashboard__year button {
+  padding: 6px 20px;
+  background: var(--secundary-color);
+  font-size: 0.6em;
+  color: #000;
+  margin-top: -7px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  outline: none;
+  border: none;
+}
+
+.dashboard__year ul {
+  margin-left: 20px;
+  list-style: none;
+}
+
+.dashboard__year li {
+  font-size: 0.7em;
+  margin-top: 10px;
+}
+
+.dashboard__year ul {
+  list-style: none;
+  /* remove default list style */
+  padding-left: 0;
+  /* remove default padding */
+}
+
+.dashboard__year ul li:nth-child(1)::before {
+  content: "• ";
+  color: #BAEDBD;
+}
+
+.dashboard__year ul li:nth-child(2)::before {
+  content: "• ";
+  color: #FFCB00;
+}
+
+.dashboard__year ul li:nth-child(3)::before {
+  content: "• ";
+  color: #1c1c1c;
+}
+
+.dashboard__year ul li:nth-child(4)::before {
+  content: "• ";
+  color: #BAEDBD;
+}
+
+.dashboard__year ul li:nth-child(5)::before {
+  content: "• ";
+  color: #C6C7F8;
+}
+
+
+.dashboard__close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--secundary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -8%;
+  right: -1%;
+  padding: 10px;
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--color-line);
+}
+
+.hytre {
+  top: -12%;
+  right: -3%;
 }

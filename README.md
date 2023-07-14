@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+## Design Test Submission
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This README document provides detailed instructions on how to setup, run, and understand the design test project I have submitted. 
 
-## Available Scripts
+### About the Project
 
-In the project directory, you can run:
+This design test project is a React application that includes a table of transactions, each with a "View" button. Clicking on this button will open a modal displaying the history of the selected transaction. 
 
-### `npm start`
+The project was created using React and CSS for styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Project Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here are the steps you need to follow to set up and run the project:
 
-### `npm test`
+1. Clone the repository
+```
+git clone <repository-url>
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory
+```
+cd <project-directory>
+```
 
-### `npm run build`
+3. Install the dependencies
+```
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start the project
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The project should now be running at `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Design Decisions
 
-### `npm run eject`
+**Table:** I created a table to display the transactions because it is a straightforward way to present and organize data. It provides clear separation between each transaction and allows the user to easily scan and understand the information.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Modal:** I used a modal to display the transaction history as it focuses the user's attention on the selected transaction's history. The modal is an effective way to provide additional information without navigating away from the current view.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Styling:** I kept the styling simple and clean to ensure that the data and functionality were the focus of the design. I used common design patterns for button and table styles to ensure familiarity and ease of use for the user.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Pagination** There is a Pagination for the table if the transactions increase significantly.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Future Enhancements
+1. Search and filter functionality to help the user locate specific transactions.
+2. More detailed transaction history, possibly including a timeline view.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I hope you find the design and execution up to standards. Looking forward to your feedback.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Best Regards,
+Olamilekan Musediq
